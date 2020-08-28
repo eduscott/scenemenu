@@ -6,7 +6,7 @@ local speedZone
 local speedzones = {}
 
 _menuPool = NativeUI.CreatePool()
-trafficmenu = NativeUI.CreateMenu("Scene Menu", "~b~Traffic Policing Helper (By Kye Jones)")
+trafficmenu = NativeUI.CreateMenu("Scene Menu", "~b~(By Kye Jones)")
 _menuPool:Add(trafficmenu)
 
 function ShowNotification(text)
@@ -16,7 +16,7 @@ function ShowNotification(text)
 end
 
 function ObjectsSubMenu(menu)
-  local submenu = _menuPool:AddSubMenu(menu, "Objects Menu")
+  local submenu = _menuPool:AddSubMenu(menu, "Menu de Objetos")
 
   local objects = { }
 
@@ -28,8 +28,8 @@ function ObjectsSubMenu(menu)
     end
   end
 
-  local objectlist = NativeUI.CreateListItem("Object Spawning", objects, 1, "Press enter to select the object to spawn.")
-  local deletebutton = NativeUI.CreateItem("Delete", "Delete nearest object.")
+  local objectlist = NativeUI.CreateListItem("Objeto Colocado", objects, 1, "Pressione enter para colocar o objeto selecionado.")
+  local deletebutton = NativeUI.CreateItem("Remover", "Remover o objeto mais próximo.")
 
 
   submenu:AddItem(deletebutton)
@@ -77,7 +77,7 @@ function ObjectsSubMenu(menu)
 end
 
 function SpeedZoneSubMenu(menu)
-  local submenu = _menuPool:AddSubMenu(menu, "Speed Zone")
+  local submenu = _menuPool:AddSubMenu(menu, "Zona de Redução de Velocidade")
   local radiusnum = { }
 
   local speednum = { }
@@ -90,10 +90,10 @@ function SpeedZoneSubMenu(menu)
     table.insert(speednum, v)
   end
 
-  local zonecreate = NativeUI.CreateItem("Create Zone", "Creates a zone with the radius and speed specified.")
-  local zoneradius = NativeUI.CreateSliderItem("Radius", radiusnum, 1, false)
-  local zonespeed = NativeUI.CreateListItem("Speed", speednum, 1)
-  local zonedelete = NativeUI.CreateItem("Delete Zone", "Deletes your placed zone.")
+  local zonecreate = NativeUI.CreateItem("Criar Zona", "Cria uma zona com o raio e a velocidade especificada.")
+  local zoneradius = NativeUI.CreateSliderItem("Raio", radiusnum, 1, false)
+  local zonespeed = NativeUI.CreateListItem("Velocidade", speednum, 1)
+  local zonedelete = NativeUI.CreateItem("Remover Zona", "Remover a zona criada.")
 
   submenu:AddItem(zoneradius)
   submenu:AddItem(zonespeed)
@@ -104,17 +104,17 @@ function SpeedZoneSubMenu(menu)
 
   submenu.OnSliderChange = function(sender, item, index)
         radius = item:IndexToItem(index)
-        ShowNotification("Changing radius to ~r~" .. radius)
+        ShowNotification("Alterando raio para ~r~" .. radius)
   end
 
   submenu.OnListChange = function(sender, item, index)
     speed = item:IndexToItem(index)
-    ShowNotification("Changing speed to ~r~" .. speed)
+    ShowNotification("Alterando velocidade para ~r~" .. speed)
   end
 
   zonedelete.Activated = function(sender, item, index)
-      TriggerServerEvent('Disable')
-      ShowNotification("Disabled zones.")
+      TriggerServerEvent('Desativar')
+      ShowNotification("Disativar zonas.")
   end
 
   zonecreate.Activated = function(sender, item, index)
@@ -124,12 +124,12 @@ function SpeedZoneSubMenu(menu)
       end
 
       if not radius then
-        ShowNotification("~r~Please change the radius!")
+        ShowNotification("~r~Por favor troque o raio!")
         return
       end
 
           speedZoneActive = true
-          ShowNotification("Created Speed Zone.")
+          ShowNotification("Zona de Velocidade criada.")
           local x, y, z = table.unpack(GetEntityCoords(GetPlayerPed(-1)))
           radius = radius + 0.0
           speed = speed + 0.0
@@ -137,7 +137,7 @@ function SpeedZoneSubMenu(menu)
           local streetName, crossing = GetStreetNameAtCoord(x, y, z)
           streetName = GetStreetNameFromHashKey(streetName)
 
-          local message = "^* ^1Traffic Announcement: ^r^*^7Police have ordered that traffic on ^2" .. streetName .. " ^7is to travel at a speed of ^2" .. speed .. "mph ^7due to an incident." 
+          local message = "^* ^1Anúncio de Tráfego: ^r^*^7A Polícia ordenou que o tráfego na ^2" .. streetName .. " ^7deverá ser de ^2" .. speed .. "km/h ^7devido a um incidente." 
           TriggerServerEvent('ZoneActivated', message, speed, radius, x, y, z)
   end
 
@@ -178,7 +178,7 @@ Citizen.CreateThread(function()
           if inArray(GlobalData, Config.WhitelistedIPs) then
             trafficmenu:Visible(not trafficmenu:Visible())
           else 
-            print("You are not whitelisted to use this.")
+            print("Você não tem autorização para usar isto.")
           end
 
         elseif Config.UsageMode == "Steam" then
@@ -188,7 +188,7 @@ Citizen.CreateThread(function()
           if inArraySteam(GlobalData, Config.WhitelistedSteam) then
             trafficmenu:Visible(not trafficmenu:Visible())
           else 
-            print("You are not whitelisted to use this.")
+            print("Você não tem autorização para usar isto.")
           end
 
         elseif Config.UsageMode == "Everyone" then
