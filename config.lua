@@ -62,11 +62,10 @@ To add an object, simply follow the below template and add it between the dashed
 
 ]]--
 Config.Objects = {
-    { Displayname = "Police Barrier", Object = "prop_barrier_work05" },
-    { Displayname = "Big Cone", Object = "prop_roadcone01a" },
-    { Displayname = "Small Cone", Object = "prop_roadcone02b" },
-    { Displayname = "Gazebo", Object = "prop_gazebo_02" },
-    { Displayname = "Scene Lights", Object = "prop_worklight_03b" },
+    { Displayname = "Barreira Policial 1", Object = "prop_barrier_work05" },
+    { Displayname = "BCone Grande", Object = "prop_roadcone01a" },
+    { Displayname = "Cone Pequeno", Object = "prop_roadcone02b" },
+    { Displayname = "Holofotes", Object = "prop_worklight_03b" },
     ---------------------------------------------------------------
     ---------------------- Add more below! ------------------------
     -----------------------v-------------v-------------------------
@@ -88,4 +87,4 @@ Config.SpeedZone = {
 --[[ 
 The message that shows in chat when speed zone is placed. Set to false to disable.
 ]]--
-Config.TrafficAlert = false
+Config.TrafficAlert = true
