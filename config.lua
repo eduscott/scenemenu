@@ -1,16 +1,16 @@
--- Scene Menu - By Kye Jones (123LladdCae)
--- This config file was created to help you configure the code in server.lua and client.lua a lot easier. Please do NOT edit those files.
+-- Scene Menu - Por Kye Jones (123LladdCae)
+-- Este arquivo de configuração foi criado para ajudar você a configurar o seu código no server.lua e client.lua mais facilmente. Por favor, não edite esses arquivos.
 Config = {}
 
-Config.UsageMode = "Everyone" -- Who can use the menu? Options: 'Everyone', 'Steam', 'IP', 'Ped'
-Config.ActivationMode = "Command" -- Choose how the menu is opened, options are: 'Key','Command'. 
-Config.ActivationKey = 166 -- Use the following link to find the numbers, default 166 = F5: https://docs.fivem.net/game-references/controls/
-Config.ActivationCommand = "scenemenu" -- The command used to open the menu if ActivationMode is 'Command'. (Automatically adds /)
+Config.UsageMode = "Everyone" -- Quem pode usar o menu? Opções: 'Everyone', 'Steam', 'IP', 'Ped'
+Config.ActivationMode = "Command" -- Escolha como este menu vai ser aberto. Opções: 'Key','Command'. 
+Config.ActivationKey = 166 -- Use o seguinte link para encontrar os números, o padrão é o 166 = F5: https://docs.fivem.net/game-references/controls/
+Config.ActivationCommand = "scenemenu" -- O comando usado para abrir o menu se o ActivationMode for 'Command'. (Automaticamente adiciona /)
 
 
 --[[
 
-USED WITH 'Ped' MODE!
+USANDO COM O MODO 'Ped'!
 
 Array below is a list of peds that are allowed to use the menu.
 If the player activating is not in a ped in here, the menu will not open.
@@ -63,8 +63,9 @@ To add an object, simply follow the below template and add it between the dashed
 ]]--
 Config.Objects = {
     { Displayname = "Barreira Policial 1", Object = "prop_barrier_work05" },
-    { Displayname = "BCone Grande", Object = "prop_roadcone01a" },
+    { Displayname = "Cone Grande", Object = "prop_roadcone01a" },
     { Displayname = "Cone Pequeno", Object = "prop_roadcone02b" },
+    { Displayname = "Cone Tambor", Object = "prop_barrier_wat_03a" }.
     { Displayname = "Holofotes", Object = "prop_worklight_03b" },
     ---------------------------------------------------------------
     ---------------------- Add more below! ------------------------
